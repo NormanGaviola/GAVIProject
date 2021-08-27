@@ -1,0 +1,31 @@
+@startuml
+skinparam packageStyle rectangle
+
+rectangle CUP-BALL-GAME {
+
+GameMaster --> (Shuffles the cup)
+(Shuffles the cup) --> Player
+Player --> (Guess a cup)
+[Cup1] <.. (Guess a cup)
+[Cup2] <.. (Guess a cup)
+[Cup3] <.. (Guess a cup)
+
+(Cup With Ball) <-- [Cup1]
+(Cup With Ball) <-- [Cup2]
+(Cup With Ball) <-- [Cup3]
+
+(Wrong Cup) <-. [Cup1]
+(Wrong Cup) <-. [Cup2]
+(Wrong Cup) <-. [Cup3]
+
+(You Win) <-- (Cup With Ball)
+(Play again) <. (You Win)
+(You Lose) <-- (Wrong Cup)
+(Play again) <. (You Lose)
+(Yes) .. (Play again)
+(No) .. (Play again)
+
+(Shuffles the cup) <. (Yes)
+(Shuffles the cup) <. (No)
+
+@enduml
